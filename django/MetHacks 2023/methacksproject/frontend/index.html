@@ -7,24 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
 </head>
+<header>
+  <h1 class="gradient-text">MoodAF</h1>
+</header>
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+
 <body>
     <form action="/summary/" method="POST">
         {% csrf_token %}
-        <div class="imgcontainer">
-          <img src="img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
+
       
-        <div class="container">
+        <p>Login to View Old Entries: <br><br>
           <label for="fname"><b>First Name</b></label>
-          <input type="text" placeholder="Enter First Name" name="fname" required>
+          <input type="text"  class="textbox" placeholder="Enter First Name" name="fname" required>
       
           <label for="lname"><b>Last Name</b></label>
-          <input type="text" placeholder="Enter Last Name" name="lname" required>
+          <input type="text" class="textbox" placeholder="Enter Last Name" name="lname" required>
       
-          <button type="submit" name="submit">View Entries</button>
-        </div>
+          <a href="summary.html"><button type="submit" name="submit" class="button-34">View Entries</button></a></p>
+
+          <p><br>OR <br><br><br> Write a
+          <a href="form.html"><input type="button" name="form" value = "New Entry" class="button-34"></a>
+        </p>
       </form>
 </body>
 </html>
