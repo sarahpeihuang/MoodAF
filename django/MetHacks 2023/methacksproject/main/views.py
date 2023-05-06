@@ -4,6 +4,7 @@ from .models import PatientData
 from .forms import PatientForm
 from django.contrib import messages
 from django.db.models import Q
+from methacksproject.globals import GLOBAL_FNAME, GLOBAL_LNAME
 
 
 #Where ALL the python functions are written
