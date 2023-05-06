@@ -30,7 +30,9 @@
           <a href="summary.html"><button type="submit" name="submit" class="button-34">View Entries</button></a></p>
         </p>
       </form>
+
       <form action="/form/" method="POST">
+        {% csrf_token %}
         <p>
           <p><br>OR <br><br><br> Write a
           <input type="button" name="form" value = "New Entry" class="button-34">
