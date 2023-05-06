@@ -48,7 +48,7 @@ def summary(request):
     GLOBAL_FNAME = patientfName
     global GLOBAL_LNAME
     GLOBAL_LNAME = patientlName
-    getEntries(request, patientfName, patientlName)
+    #viewEntries(request, patientfName, patientlName)
     #extract all entries under firstname and lastname
     #call a function that extracts and formats all entries under fname and lname
     return render(request, 'summary.html', {})
