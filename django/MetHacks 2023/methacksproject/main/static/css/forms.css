@@ -1,6 +1,14 @@
 body {
     background-color: #ffffe3;
   }
+
+p{  font-family: "Archivo Black", sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 18px;}
 .gradient-text {
 /* Fallback: Set a background color. */
 background-color: #CA4246;
@@ -101,7 +109,7 @@ width: 605px;}
   color: green;
   cursor: pointer;
   display: inline-block;
-  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  font-family: "Archivo Black", sans-serif;
   padding: 7px 20px;
   text-align: center;
   text-decoration: none;
