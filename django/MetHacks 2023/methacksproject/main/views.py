@@ -61,23 +61,8 @@ def viewEntries(request):
     #PUT COHERE'ED RETURNS
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
-#TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
-#this should be associated with the home page
 
-#TODO: submit form function, if all the entires are valid in the journal entry, allows the form to be submitted and saved into database
-
-#TODO: function COHERE API - summarize journal entry inputs 
-
-#TODO: function COHERE API - classify journal entry inputs
-
-#TODO: function to organize all the outputs of the cohere API model
-
-#TODO: function display summarized and mood of journal entry on webpage - could be any sort of display
-
-#TODO: create other functions to change the html view of the webpage if we wanna do different page links or tabs etc
-
-#TODO: function to summarize ALL the journal entry data from each patient (this is more for healthcare research use I guess)
-
+#classification 
 co = cohere.Client('yhlIG1WYyeUVrAJ2NzhQwYKnghq6sbs8DfWCPulm') # This is your trial API key
 def responseEval(msg):
   response = co.classify(
@@ -110,6 +95,8 @@ def responseEval(msg):
             Example("Today, I received some unexpected bills in the mail that I wasn\'t prepared for. I\'ve been struggling financially and the added stress of these bills is overwhelming. I feel like I\'m drowning in debt and can\'t seem to catch a break. The weight of these financial burdens is taking a toll on my mental and physical health, and I\'m not sure how to cope.", "Stressed"), 
             Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed")])
   return response.classifications[0].prediction
+
+
 #EXTRAS
 #TODO: Personalizable journal entries page? (this would be cool but IDK how to do this at all)
 #TODO: Google map API to gather location information for healthcare research purposes
