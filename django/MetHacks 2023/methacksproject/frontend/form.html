@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}"/>
 </head>
 <body>
-    <form method="POST" action="{% url 'form'}">
+    <form method="POST" action="/form/">
         {% csrf_token %}
         <label for="date">Entry Date:</label>
         <input type="date" id="date" name="date">
@@ -18,10 +18,9 @@
         <textarea id="entryBox" name="entryBox" rows="4" cols="50"> how are you feeling today?</textarea> 
         <!-- on click, clear the textbox -->
         <br>
-        <a href="postForm.html"><input type="submit" name="submit" value = "Log Entry"></a>
+        <input type="submit" name="submit" value = "Log Entry">
         <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries"></a>
-        <a href="index.html"><input type="button" name="logout" value = "Logout"></a>
-        
+        <a href="index.html"><input type="button" name="logout" value = "Logout"></a>     
     </form>
 
 </body>

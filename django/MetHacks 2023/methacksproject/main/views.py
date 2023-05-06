@@ -17,7 +17,7 @@ def form(request):
         submission = PatientForm(request.POST or None)
         if submission.is_valid():
             submission.save()
-            return postForm(request)
+            return render(request, 'form.html', {})
         else:
             return render(request, 'form.html', {})
     else:
