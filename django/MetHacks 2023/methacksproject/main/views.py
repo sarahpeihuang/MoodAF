@@ -39,11 +39,11 @@ def postForm(request, originalEntries, analyzedEntries):
 
 
 #Function for all entries from login page
-def summary(request, fname, lname):
+def summary(request):
     #TODO: INPUT ERROR (NEED TO BE ABLE TO QUERY ALL ENTRIES WHEN GIVEN FNAME AND LNAME)
+    #Entering from form doesn't have request information
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
-    #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
     #extract all entries under firstname and lastname
     #call a function that extracts and formats all entries under fname and lname
     return render(request, 'summary.html', {})
