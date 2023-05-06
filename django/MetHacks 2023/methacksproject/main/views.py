@@ -27,16 +27,11 @@ def form(request):
 def postForm(request):
     return render(request, 'form.html', {})
 
-def login(request):
-    patientfName = request.POST['fname']
-    patientlName = request.POST['lname']
-    return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
-    #DISPLAY ALL ENTRIES WITH THESE FIRST AND LAST NAMES
-
 def summary(request):
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
-    return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
+    #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
+    return render(request, 'summary.html', {})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page
