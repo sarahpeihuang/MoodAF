@@ -32,7 +32,8 @@ def analyzeEntry(request, fname, lname, date):
     all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
     #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
     #return cohere's analysis
-    return all_entries
+    return render(request, "postForm.html", {'entries': all_entries})
+    #return all_entries
         
 
 def postForm(request, originalEntries, analyzedEntries):
@@ -48,10 +49,9 @@ def summary(request):
     #call a function that extracts and formats all entries under fname and lname
     return render(request, 'summary.html', {})
 
-
-def getEntries(request, fname, lname):
-    return ()
-
+def viewEntries(request):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
+    return HttpResponse("hi")
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page
