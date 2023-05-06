@@ -126,6 +126,9 @@ width: 605px;}
   transform: scale(1.05) rotate(-1deg);
 }
 
+
+
+
 /* Styling the textbox */
 .textbox {
     border: 1px solid #ccc;
@@ -133,6 +136,7 @@ width: 605px;}
     font-family: "Archivo Black", sans-serif;
     font-size: 18px;
     padding: 5px;
+    
   }
   
   /* Styling the textbox on focus */
