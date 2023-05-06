@@ -9,6 +9,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'postForm.css' %}"/>
 </head>
 <body>
+    <div>
+        <h1>Your entry: </h1>
+        <br>
+        {% for entry in entries %}
+            {{ entry.entryBox }}
+        {% endfor %}
+    </div>
     <label for="date">Based on your entry:</label><br>
     <textarea id="entryBox" name="entryBox" rows="4" cols="50"></textarea> 
     <!-- fill with cohere API info -->

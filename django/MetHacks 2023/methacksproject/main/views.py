@@ -27,8 +27,9 @@ def form(request):
         return render(request, 'form.html', {})
         
         
-def postForm(request, fname, lname):
-    return render(request, 'postForm.html', {})
+def postForm(request, fname, lname, date):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
+    return render(request, "postForm.html", {'entries': all_entries, 'fname': fname, 'lname': lname})
 
 def summary(request):
     patientfName = request.POST['fname']
