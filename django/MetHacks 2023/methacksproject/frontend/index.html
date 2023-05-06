@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="/summary/" method="POST">
         {% csrf_token %}
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">
@@ -24,11 +24,6 @@
           <input type="text" placeholder="Enter Last Name" name="lname" required>
       
           <button type="submit" name="submit">View Entries</button>
-        </div>
-      
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
       </form>
 </body>
