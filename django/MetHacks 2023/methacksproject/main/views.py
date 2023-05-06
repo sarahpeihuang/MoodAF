@@ -11,7 +11,11 @@ from django.db.models import Q
 def home(request):
     return render(request, 'index.html', {})
 
+def form(request):
+    return render(request, 'form.html', {})
+
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
+#this should be associated with the home page
 
 #TODO: submit form function, if all the entires are valid in the journal entry, allows the form to be submitted and saved into database
 
