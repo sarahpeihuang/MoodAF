@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entry</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}"/>
+</head>
+<body>
+    <form method="POST" action="{% url 'formSubmit'}">
+        {% csrf_token %}
+        <label for="date">Entry Date:</label>
+        <input type="date" id="date" name="date">
+    <br>
+        <textarea id="entryBox" name="entryBox" rows="4" cols="50"> how are you feeling today?</textarea> 
+        <!-- on click, clear the textbox -->
+        <br>
+        <a href="postForm.html"><input type="submit" name="submit" value = "Log Entry"></a>
+        <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries"></a>
+        <a href="index.html"><input type="button" name="logout" value = "Logout"></a>
+        
+    </form>
+
+</body>
+</html>

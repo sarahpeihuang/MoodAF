@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Feedback</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}"/>
+</head>
+<body>
+    <label for="date">Based on your entry:</label><br>
+    <textarea id="entryBox" name="entryBox" rows="4" cols="50"></textarea> 
+    <!-- fill with cohere API info -->
+    <form>
+        {% csrf_token %}
+        <input type="button" name="share" value = "Share with Medical Professional">
+        <!-- alert on click -->
+        <br><br>
+        <a href="form.html"><input type="submit" name="submit" value = "Add Another Entry"></a>
+        <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries"></a>
+        <a href="index.html"><input type="button" name="logout" value = "Logout"></a>
+    </form>
+</body>
+</html>
