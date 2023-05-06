@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 
 
-# Create your views here.
+#Where ALL the python functions are written
 
 def home(request):
     return render(request, 'index.html', {})
@@ -18,6 +18,8 @@ def home(request):
 #TODO: function COHERE API - summarize journal entry inputs 
 
 #TODO: function COHERE API - classify journal entry inputs
+
+#TODO: function to organize all the outputs of the cohere API model
 
 #TODO: function display summarized and mood of journal entry on webpage - could be any sort of display
 

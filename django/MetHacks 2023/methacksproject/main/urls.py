@@ -1,6 +1,8 @@
 from django.urls import path, include
 from main import views
 
+#Specifies all the PATHS in the website
+
 urlpatterns = [
     path('', views.home, name='home') #when there is no path specified, run the home function in views.py 
 
