@@ -33,9 +33,9 @@ def analyzeEntry(request, fname, lname, date):
     return all_entries
         
 
-def postForm(request, fname, lname, date):
-    all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
-    return render(request, "postForm.html", {'entries': all_entries, 'fname': fname, 'lname': lname})
+def postForm(request, originalEntries, analyzedEntries):
+    return render(request, "postForm.html", {'entries': originalEntries, 'analyzed': analyzedEntries})
+
 
 def summary(request, fname, lname):
     patientfName = request.POST['fname']
