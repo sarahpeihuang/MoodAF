@@ -54,7 +54,8 @@ def summary(request):
 
 
 def viewEntries(request):
-    return summary(request)
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
+    return render(request, 'summary.html', {'entries': all_entries})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page
