@@ -20,22 +20,31 @@ def form(request):
             patientfName = request.POST['fname']
             patientlName = request.POST['lname']
             date = request.POST['date']
-            return postForm(request, patientfName, patientlName, date)
+            return analyzeEntry(request, patientfName, patientlName, date)
         else:
             return render(request, 'form.html', {})
     else:
         return render(request, 'form.html', {})
-        
-        
-def postForm(request, fname, lname):
-    return render(request, 'postForm.html', {})
+    
 
-def summary(request):
+def analyzeEntry(request, fname, lname, date):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
+    #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
+    #return cohere's analysis
+    return all_entries
+        
+
+def postForm(request, originalEntries, analyzedEntries):
+    return render(request, "postForm.html", {'entries': originalEntries, 'analyzed': analyzedEntries})
+
+
+def summary(request, fname, lname):
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
     #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
     #extract all entries under firstname and lastname
     return render(request, 'summary.html', {})
+
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page
