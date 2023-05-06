@@ -4,6 +4,7 @@ from .models import PatientData
 from .forms import PatientForm
 from django.contrib import messages
 from django.db.models import Q
+from methacksproject.globals import GLOBAL_FNAME, GLOBAL_LNAME
 
 
 #Where ALL the python functions are written
@@ -38,12 +39,18 @@ def postForm(request, originalEntries, analyzedEntries):
     return render(request, "postForm.html", {'entries': originalEntries, 'analyzed': analyzedEntries})
 
 
-def summary(request, fname, lname):
+#Function for all entries from login page
+def summary(request):
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
-    #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
+    getEntries(request, patientfName, patientlName)
     #extract all entries under firstname and lastname
+    #call a function that extracts and formats all entries under fname and lname
     return render(request, 'summary.html', {})
+
+
+def getEntries(request, fname, lname):
+    return ()
 
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
