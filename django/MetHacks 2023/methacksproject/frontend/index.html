@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="/summaries">
         {% csrf_token %}
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">

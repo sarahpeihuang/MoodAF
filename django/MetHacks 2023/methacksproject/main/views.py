@@ -31,6 +31,7 @@ def summary(request):
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
     #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
+    #extract all entries under firstname and lastname
     return render(request, 'summary.html', {})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
