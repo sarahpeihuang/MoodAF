@@ -12,6 +12,9 @@
 <body>
     <form method="POST" action="/form/">
         {% csrf_token %}
+        <label for="date">Hi 
+            <input type="text" id="name" name="name">, how are you feeling today?
+        </label> <br>
         <label for="date">Entry Date:</label>
         <input type="date" id="date" name="date">
     <br>
