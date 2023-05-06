@@ -20,18 +20,24 @@ def form(request):
             patientfName = request.POST['fname']
             patientlName = request.POST['lname']
             date = request.POST['date']
-            return postForm(request, patientfName, patientlName, date)
+            return analyzeEntry(request, patientfName, patientlName, date)
         else:
             return render(request, 'form.html', {})
     else:
         return render(request, 'form.html', {})
+    
+def analyzeEntry(request, fname, lname, date):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
+    #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
+    #return cohere's analysis
+    return all_entries
         
-        
+
 def postForm(request, fname, lname, date):
     all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
     return render(request, "postForm.html", {'entries': all_entries, 'fname': fname, 'lname': lname})
 
-def summary(request):
+def summary(request, fname, lname):
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
     #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
