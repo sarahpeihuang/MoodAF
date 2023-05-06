@@ -1,11 +1,15 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
 #Let a PatientData object represent one journal entry 
 class PatientData(models.Model):
-    #TODO: define the type of input for each of the fields specified in forms
-    #must include NAME (required form input) because that is how the patient will be able to access all the entries they've made
+    fname = models.CharField(max_length=50) #Short answer
+    lname = models.CharField(max_length=50) #Short answer
+    entry = models.TextField(blank=True) #Long answer
+    date = models.DateField(default=date.today) #Date entry
+
 
     def __str__(self):
         return () 
