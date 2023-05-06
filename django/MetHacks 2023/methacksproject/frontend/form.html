@@ -12,7 +12,7 @@
 <body>
     <form method="POST" action="{% url 'formSubmit'}">
         {% csrf_token %}
-        <label for="birthday">Entry Date:</label>
+        <label for="date">Entry Date:</label>
         <input type="date" id="date" name="date">
     <br>
         <textarea id="entryBox" name="entryBox" rows="4" cols="50"> how are you feeling today?</textarea> 
