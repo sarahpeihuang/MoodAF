@@ -11,23 +11,21 @@ from django.db.models import Q
 def home(request):
     return render(request, 'index.html', {})
 
-def form(request):
-    return render(request, 'form.html', {})
 
-def formSubmit(request):
+def form(request):
     if request.method == "POST":
         submission = PatientForm(request.POST or None)
         if submission.is_valid():
             submission.save()
             return postForm(request)
         else:
-            return form(request)
+            return render(request, 'form.html', {})
     else:
-        form(request)
+        return render(request, 'form.html', {})
         
         
 def postForm(request):
-    return render(request, 'postForm.html', {})
+    return render(request, 'form.html', {})
 
 def login(request):
     patientfName = request.GET['fname']
