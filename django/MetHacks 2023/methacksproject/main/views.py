@@ -17,7 +17,7 @@ def form(request):
         submission = PatientForm(request.POST or None)
         if submission.is_valid():
             submission.save()
-            return render(request, 'form.html', {})
+            return summary(request)
         else:
             return render(request, 'form.html', {})
     else:
@@ -27,9 +27,11 @@ def form(request):
 def postForm(request):
     return render(request, 'form.html', {})
 
-def login(request):
-    patientfName = request.GET['fname']
-    patientlName = request.Get['lname']
+def summary(request):
+    patientfName = request.POST['fname']
+    patientlName = request.POST['lname']
+    #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
+    return render(request, 'summary.html', {})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page

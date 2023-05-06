@@ -11,4 +11,4 @@ class PatientData(models.Model):
     date = models.DateField(default=date.today) #Date entry
 
     def __str__(self):
-        return () 
+        return (self.fname + " " + self.lname) 

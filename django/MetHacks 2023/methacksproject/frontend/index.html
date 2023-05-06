@@ -7,12 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"/>
 </head>
 <body>
-    {% block content %}
-    <P>TEST</P>
-    <!--WRITE CODE HERE-->
-    {% endblock %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="imgcontainer">
+          <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+      
+        <div class="container">
+          <label for="fname"><b>First Name</b></label>
+          <input type="text" placeholder="Enter First Name" name="fname" required>
+      
+          <label for="lname"><b>Last Name</b></label>
+          <input type="text" placeholder="Enter Last Name" name="lname" required>
+      
+          <button type="submit" name="submit">View Entries</button>
+        </div>
+      
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
 </body>
 </html>
