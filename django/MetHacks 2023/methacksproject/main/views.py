@@ -17,15 +17,18 @@ def form(request):
         submission = PatientForm(request.POST or None)
         if submission.is_valid():
             submission.save()
-            return summary(request)
+            patientfName = request.POST['fname']
+            patientlName = request.POST['lname']
+            date = request.POST['date']
+            return postForm(request, patientfName, patientlName, date)
         else:
             return render(request, 'form.html', {})
     else:
         return render(request, 'form.html', {})
         
         
-def postForm(request):
-    return render(request, 'form.html', {})
+def postForm(request, fname, lname):
+    return render(request, 'postForm.html', {})
 
 def summary(request):
     patientfName = request.POST['fname']
