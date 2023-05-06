@@ -44,14 +44,18 @@ def postForm(request, originalEntries, analyzedEntries):
 def summary(request):
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
-    getEntries(request, patientfName, patientlName)
+    global GLOBAL_FNAME
+    GLOBAL_FNAME = patientfName
+    global GLOBAL_LNAME
+    GLOBAL_LNAME = patientlName
+    #viewEntries(request, patientfName, patientlName)
     #extract all entries under firstname and lastname
     #call a function that extracts and formats all entries under fname and lname
     return render(request, 'summary.html', {})
 
 def viewEntries(request):
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
-    return HttpResponse("hi")
+    return render(request, 'index.html', {})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page
