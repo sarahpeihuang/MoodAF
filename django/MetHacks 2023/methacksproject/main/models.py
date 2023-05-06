@@ -7,7 +7,7 @@ from datetime import date
 class PatientData(models.Model):
     fname = models.CharField(max_length=50) #Short answer
     lname = models.CharField(max_length=50) #Short answer
-    entry = models.TextField(blank=True) #Long answer (required entry)
+    entryBox = models.TextField(blank=True) #Long answer (required entry)
     date = models.DateField(default=date.today) #Date entry
 
 
