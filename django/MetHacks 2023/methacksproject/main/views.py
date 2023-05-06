@@ -57,9 +57,12 @@ def summary(request):
 
 
 def viewEntries(request):
-    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
-    #PUT COHERE'ED RETURNS
-    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
+    if GLOBAL_LNAME == None and GLOBAL_FNAME == None:
+        return HttpResponse("pH")
+    else:
+        all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
+        #PUT COHERE'ED RETURNS
+        return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 
 #classification 
