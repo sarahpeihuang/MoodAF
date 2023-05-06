@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}"/>
 </head>
 <body>
-    <form method="POST" action="{% url 'forms'}">
+    <form method="POST" action="{% url 'form'}">
         {% csrf_token %}
         <label for="birthday">Entry Date:</label>
         <input type="date" id="date" name="date">
