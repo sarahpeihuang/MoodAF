@@ -49,12 +49,14 @@ def summary(request):
     global GLOBAL_LNAME
     GLOBAL_LNAME = patientlName
 
+    #PUT COHERE'ED RETURNS
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 
 def viewEntries(request):
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
+    #PUT COHERE'ED RETURNS
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
