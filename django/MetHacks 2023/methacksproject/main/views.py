@@ -50,14 +50,14 @@ def summary(request):
     GLOBAL_FNAME = patientfName
     global GLOBAL_LNAME
     GLOBAL_LNAME = patientlName
-    #viewEntries(request, patientfName, patientlName)
-    #extract all entries under firstname and lastname
-    #call a function that extracts and formats all entries under fname and lname
-    return render(request, 'summary.html', {})
+
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
+    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
+
 
 def viewEntries(request):
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
-    return render(request, 'index.html', {})
+    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page

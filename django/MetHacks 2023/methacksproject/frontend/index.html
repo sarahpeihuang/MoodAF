@@ -28,10 +28,13 @@
           <input type="text" class="textbox" placeholder="Enter Last Name" name="lname" required>
           <br>
           <a href="summary.html"><button type="submit" name="submit" class="button-34">View Entries</button></a></p>
-
-          <p><br>OR <br><br><br> Write a
-          <a href="form.html"><input type="button" name="form" value = "New Entry" class="button-34"></a>
         </p>
+      </form>
+
+      <form action="/form/" method="POST">
+        {% csrf_token %}
+          <p><br>OR <br><br><br> Write a</p>
+          <button type="submit" class="button-34">New Entry</button>
       </form>
 </body>
 </html>

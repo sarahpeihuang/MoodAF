@@ -17,17 +17,6 @@
     
     <form method="POST" action="/form/">
         {% csrf_token %}
-        <label for="date" class="p1">Hi 
-            <input type="text" id="fName" name="fname" placeholder="First Name">   <input type="text" id="lName" name="lname" placeholder="Last Name">, how are you feeling today?
-        </label> <br>
-        <label for="date">Entry Date:</label>
-        <input type="date" id="date" name="date">
-    <br>
-        <textarea id="entryBox" name="entryBox" rows="4" cols="50"> how are you feeling today?</textarea> 
-        <!-- on click, clear the textbox -->
-        <br>
-        <!-- <input type="submit" name="submit" value = "Log Entry" class="button-34">
-        <a href="http://127.0.0.1:8000/summary/"><input type="button" name="pastEntries" value = "View Past Entries" class="button-34"></a> -->
         <p>Hi 
             <input type="text" id="fName" name="fname" placeholder="First Name" class="textbox">   <input type="text" id="lName" name="lname" placeholder="Last Name" class="textbox">, how are you feeling today?
         </p> 
@@ -38,18 +27,13 @@
         </div>
         <p>
         <input type="submit" name="submit" value = "Log Entry" class="button-34">
-        <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries" class="button-34"></a>
-
-        <a href="http://127.0.0.1:8000/summary/"><input type="button" name="pastEntries" value = "View Past Entries" class="button-34"></a>
-        <!--CONNECT BUTTON TO DJANGO FUNCTION-->
 
         <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a> 
-        <button class="button-34" role="button">Button 34</button>
     </form>
-
+        <br>
         <form method="POST" action="/viewEntries/">
             {% csrf_token %}
-            <button type="submit">Submit</button>
+            <button type="submit" class="button-34">View All My Entries</button>
         </form>
 
 </body>

@@ -18,24 +18,15 @@
     <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add a New Entry"></a>
     <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout"></a>
 
-    <form method="POST" action="{% url 'formSubmit'}">
-        {% csrf_token %}
-        <div id = "past">
-            <div class="row">
-                <div class="column">
-                    <div class="card">
-                    <h3>Trip to FreshCo</h3>
-                    <p>From: SunnySide Senior Home </p>
-                    <p>@4:15</p>
-                    <p>Seats Remaining: 3</p> 
-                    <p>Wheelchair ramp included</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-    </form>
+    <div>
+        <h1>{{ first }}'s Entries</h1>
+        {% for entry in entries %}
+        <p>Date: {{ entry.date }}</p>
+        {{ entry.entryBox }}
+        <br>
+        <br>
+        {% endfor %}
+    </div>
 
 </body>
 </html>
