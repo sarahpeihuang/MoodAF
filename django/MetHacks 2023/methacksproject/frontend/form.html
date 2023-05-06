@@ -9,11 +9,17 @@
     <title>Journal Entry</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
 </head>
+<header>
+    <h1 class="gradient-text">MoodAF</h1>
+  </header>
+  
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
 <body>
+    
     <form method="POST" action="/form/">
         {% csrf_token %}
-        <label for="date">Hi 
-            <input type="text" id="name" name="name">, how are you feeling today?
+        <label for="date" class="p1">Hi 
+            <input type="text" id="fName" name="fName" value="first">  <input type="text" id="lName" name="lName" value="last">, how are you feeling today?
         </label> <br>
         <label for="date">Entry Date:</label>
         <input type="date" id="date" name="date">
@@ -21,9 +27,11 @@
         <textarea id="entryBox" name="entryBox" rows="4" cols="50"> how are you feeling today?</textarea> 
         <!-- on click, clear the textbox -->
         <br>
-        <input type="submit" name="submit" value = "Log Entry">
-        <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries"></a>
-        <a href="index.html"><input type="button" name="logout" value = "Logout"></a>     
+        <input type="submit" name="submit" value = "Log Entry" class="button-34">
+        <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries" class="button-34"></a>
+        <a href="index.html"><input type="button" name="logout" value = "Logout" class="button-34"></a> 
+        <button class="button-34" role="button">Button 34</button>
+    
     </form>
 
 </body>
