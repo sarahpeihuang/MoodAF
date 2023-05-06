@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entry Feedback</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'postForm.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
 </head>
+<header>
+    <h1 class="gradient-text">MoodAF</h1>
+  </header>
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+
 <body>
     <div>
         <h1>Your entry: </h1>
@@ -16,17 +21,17 @@
             {{ entry.entryBox }}
         {% endfor %}
     </div>
-    <label for="date">Based on your entry:</label><br>
-    <textarea id="entryBox" name="entryBox" rows="4" cols="50"></textarea> 
-    <!-- fill with cohere API info -->
+    <p>Based on your entry:</p><br>
+    <textarea  class="textbox" id="entryBox" name="entryBox" rows="8" cols="101" class="textbox"> </textarea> 
+        <!-- fill with cohere API info -->
     <form>
         {% csrf_token %}
         <input type="button" name="share" value = "Share with Medical Professional">
         <!-- alert on click -->
         <br><br>
-        <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add Another Entry"></a>
-        <a href="http://127.0.0.1:8000/summary/"><input type="button" name="pastEntries" value = "View Past Entries"></a>
-        <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout"></a>
+        <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add Another Entry" class="button-34"></a>
+        <a href="http://127.0.0.1:8000/summary/"><input type="button" name="pastEntries" value = "View Past Entries" class="button-34"></a>
+        <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
     </form>
 </body>
 </html>

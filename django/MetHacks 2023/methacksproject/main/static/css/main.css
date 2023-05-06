@@ -125,3 +125,26 @@ width: 605px;}
   box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
 }
+
+/* Styling the textbox */
+.textbox {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 18px;
+    padding: 5px;
+  }
+  
+  /* Styling the textbox on focus */
+  .textbox:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 5px #6c63ff;
+  }
+  
+  /* Styling the label above the textbox */
+  .label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+  }
