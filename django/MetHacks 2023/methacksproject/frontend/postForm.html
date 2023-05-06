@@ -17,9 +17,9 @@
         <input type="button" name="share" value = "Share with Medical Professional">
         <!-- alert on click -->
         <br><br>
-        <a href="form.html"><input type="button" name="submit" value = "Add Another Entry"></a>
-        <a href="summary.html"><input type="button" name="pastEntries" value = "View Past Entries"></a>
-        <a href="index.html"><input type="button" name="logout" value = "Logout"></a>
+        <a href="{% url 'views.form' %}"><input type="button" name="submit" value = "Add Another Entry"></a>
+        <a href="{% url 'views.summary' %}"><input type="button" name="pastEntries" value = "View Past Entries"></a>
+        <a href="{% url 'views.home' %}"><input type="button" name="logout" value = "Logout"></a>
     </form>
 </body>
 </html>

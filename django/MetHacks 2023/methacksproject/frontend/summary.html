@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'summary.css' %}"/>
 </head>
 <body>
-    <a href="form.html"><input type="button" name="submit" value = "Add a New Entry"></a>
-    <a href="index.html"><input type="button" name="logout" value = "Logout"></a>
+    <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add a New Entry"></a>
+    <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout"></a>
 
     <form method="POST" action="{% url 'formSubmit'}">
         {% csrf_token %}

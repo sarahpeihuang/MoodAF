@@ -7,7 +7,8 @@ urlpatterns = [
     path('', views.home, name='home'), #when there is no path specified, run the home function in views.py 
     path('form/', views.form, name='form'),
     path('postForm/', views.postForm, name='postForm'),
-    path('summary/', views.summary, name='summary')
+    path('summary/', views.summary, name='summary'),
+    path('allEntries/', views.summary, name='allEntries')
     #path('summary', views.summary, name='summary')
     #TODO: define the different paths (different web 'pages') associated with the website
 ]
