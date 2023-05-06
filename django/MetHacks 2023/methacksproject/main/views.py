@@ -14,6 +14,10 @@ def home(request):
 def form(request):
     return render(request, 'form.html', {})
 
+def login(request):
+    patientfName = request.GET['fname']
+    patientlName = request.Get['lname']
+
 #TODO: function that allows patient to access their journal entries (should be saved under their name) 'LOGIN' page
 #this should be associated with the home page
 
