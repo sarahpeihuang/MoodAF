@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 body {
     background-color: #EDDDD4;
   }
@@ -124,6 +125,10 @@ width: 605px;}
   box-shadow: #5E5DF0 0 -25px 18px -14px inset,#5E5DF0 0 1px 2px,#5E5DF0 0 2px 4px,#5E5DF0 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
 }
+=======
+body{background: rgb(249,119,92);
+    background: radial-gradient(circle, rgba(249,119,92,1) 31%, rgba(226,190,231,1) 81%, rgba(52,83,68,1) 100%);}
+>>>>>>> 6435c732cc959b3a77bf0bc0cab3b95b9861192e
 =======
 body{background: rgb(249,119,92);
     background: radial-gradient(circle, rgba(249,119,92,1) 31%, rgba(226,190,231,1) 81%, rgba(52,83,68,1) 100%);}
