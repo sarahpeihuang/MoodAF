@@ -13,8 +13,10 @@ def home(request):
 
 #TODO: function that allows patient to access their journal entries (should be saved under their name)
 
-#TODO: submit form function, if all the entires are valid in the journal entry, allows the form to be saved into database
+#TODO: submit form function, if all the entires are valid in the journal entry, allows the form to be submitted and saved into database
 
 #TODO: function(s) COHERE API - summarize and classify journal entry inputs 
 
 #TODO: function display summarized and mood of journal entry on webpage - could be any sort of display
+
+#TODO: create other functions to change the html view of the webpage if we wanna do different page links or tabs etc
