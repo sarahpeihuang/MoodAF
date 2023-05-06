@@ -39,6 +39,7 @@ def postForm(request, originalEntries, analyzedEntries):
 
 
 def summary(request, fname, lname):
+    #TODO: INPUT ERROR (NEED TO BE ABLE TO QUERY ALL ENTRIES WHEN GIVEN FNAME AND LNAME)
     patientfName = request.POST['fname']
     patientlName = request.POST['lname']
     #return HttpResponse("You have submitted an entry under the name: " + patientfName + " " + patientlName)
