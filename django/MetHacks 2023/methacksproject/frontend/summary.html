@@ -21,7 +21,10 @@
     <div>
         <h1>{{ first }}'s Entries</h1>
         {% for entry in entries %}
+        <p>Date: {{ entry.date }}</p>
         {{ entry.entryBox }}
+        <br>
+        <br>
         {% endfor %}
     </div>
 
