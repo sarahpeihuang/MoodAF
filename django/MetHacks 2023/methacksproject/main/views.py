@@ -50,6 +50,7 @@ def analyzeEntry(request, fname, lname, date):
     cohereClassification = responseEval(dayEntry)
     search = 'Give me some suggestions to feel better for a '+ str(cohereClassification) +' mood for my scenario:' + str(dayEntry)   
     cohereGen = generateFeedback(search)
+    all_entries.update(feedback=cohereGen)
     return render(request, "postForm.html", {'feedback': cohereGen})
     #return all_entries
 
