@@ -141,8 +141,11 @@ def analyzeAll(request):
     for key in moodDict:
         moodEntries = PatientData.objects.filter(Q(mood = key))
         totalmoodEntries = len(moodEntries)
-        percentage = int((totalmoodEntries/totalEntries) * 100)
-        moodDict[key] = percentage
+        if totalmoodEntries == 0 or totalEntries == 0:
+            moodDict[key] = 0
+        else:
+            percentage = int((totalmoodEntries/totalEntries) * 100)
+            moodDict[key] = percentage
 
     return render(request, 'community.html', {"allDayEntries": moodDict})
 

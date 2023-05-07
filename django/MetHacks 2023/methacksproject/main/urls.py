@@ -8,7 +8,8 @@ urlpatterns = [
     path('form/', views.form, name='form'),
     path('postForm/', views.postForm, name='postForm'),
     path('summary/', views.summary, name='summary'),
-    path('viewEntries/', views.viewEntries, name='viewEntries')
+    path('viewEntries/', views.viewEntries, name='viewEntries'),
+    path('community/', views.analyzeAll, name='community')
     #path('summary', views.summary, name='summary')
     #TODO: define the different paths (different web 'pages') associated with the website
 ]
