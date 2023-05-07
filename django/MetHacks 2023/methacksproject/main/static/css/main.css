@@ -2,6 +2,12 @@ body {
     background-color: #ffffe3;
   }
 
+header {
+padding: 60px;
+background: #b6e2ff;
+color: white;
+}
+
 p{  font-family: "Archivo Black", sans-serif;
     padding: 7px 20px;
     text-align: center;
