@@ -38,8 +38,12 @@ def form(request):
 def analyzeEntry(request, fname, lname, date):
     all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
     #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
-    #return cohere's analysis
-    return render(request, "postForm.html", {'entries': all_entries})
+    for index, entry in enumerate(all_entries):
+        dayEntry += entry
+        if len(all_entries) > 1 and index != len(all_entries)-1:
+            dayEntry += ". "
+    cohereClassification = responseEval(dayEntry)
+    return render(request, "postForm.html", {'entries': all_entries, 'cohere': cohereClassification})
     #return all_entries
         
 
