@@ -5,6 +5,7 @@ from .forms import PatientForm
 from django.contrib import messages
 from django.db.models import Q
 from methacksproject.globals import GLOBAL_FNAME, GLOBAL_LNAME
+from datetime import date
 import cohere
 from cohere.responses.classify import Example
 
@@ -79,7 +80,6 @@ def viewEntries(request):
         return HttpResponse("No Entries")
     else:
         all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME))
-        #PUT COHERE'ED RETURNS
         return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 
@@ -130,9 +130,13 @@ def generateFeedback(msg):
     return_likelihoods='NONE')
     print('Prediction: {}'.format(response.generations[0].text))
     return response.generations[0].text
-#EXTRAS
-#TODO: Personalizable journal entries page? (this would be cool but IDK how to do this at all)
-#TODO: Google map API to gather location information for healthcare research purposes
-#TODO: voice entry for children (attached to the form, not sure how to do this though)
-#TODO: 'Make an Account' page, where the patient makes their account, or we can just do, when a new name is submitted in the form, a new 'Patient' is entered
+
+
+def analyzeAll(request):
+    allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today))
+    #Add another datebase field
+    totalEntries = len(allPatientEntriesToday)
+    return render(request, 'community.html', {"allDayEntries": allPatientEntriesToday})
+
+
 
