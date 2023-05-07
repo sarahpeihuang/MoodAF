@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal Entry</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+
+
 </head>
 <header>
+
     <h1 class="gradient-text">MoodAF</h1>
   </header>
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -25,7 +28,10 @@
             <h3>What's on your mind?</h3>
             <textarea  class="textbox" id="entryBox" name="entryBox" rows="8" cols="101" placeholder="What's on your mind?" class="textbox"> </textarea> 
         </div>
+        Listen to some music while you write <br>
+        <audio src="{% static 'music.mp3' %}" controls loop></audio> 
         <p>
+
         <input type="submit" name="submit" value = "Log Entry" class="button-34">
     </p>
         

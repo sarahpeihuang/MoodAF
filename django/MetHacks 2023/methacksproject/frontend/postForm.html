@@ -18,7 +18,7 @@
     <div>
         <h3>Your Entry Summary and Recommendations: </h3>
         <br>
-        <textarea  class="textbox" id="entryBox" name="entryBox" rows="8" cols="101" class="textbox" readonly>
+        <textarea  class="textbox" id="entryBox" name="entryBox" rows="15" cols="101" class="textbox" readonly>
         {{ feedback }}
         
     </textarea>
@@ -44,6 +44,8 @@
     </form>
 </body>
 <footer class="footer-distributed">
+  Listen to some music<br>
+  <audio src="{% static 'music.mp3' %}" controls loop></audio> 
     <div class="footer-left">
       <p class="footer-links">
         <a href="index.html"> Home </a>

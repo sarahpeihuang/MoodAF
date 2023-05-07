@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
 </head>
 <header href="index.html">
+  
   <h1 class="gradient-text">MoodAF</h1>
 </header>
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -43,6 +44,8 @@
 
 <footer class="footer-distributed">
   <div class="footer-left">
+    Listen to some music<br>
+    <audio src="{% static 'music.mp3' %}" controls loop></audio> 
     <p class="footer-links">
       <a href="index.html"> Home </a>
       <a href="form.html"> New Entry </a>
