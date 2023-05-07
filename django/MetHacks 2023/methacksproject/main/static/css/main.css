@@ -240,13 +240,13 @@ footer {
   width: 100%;
   display: inline-block;
   background: #ccc;
-  height: 15vh;
+  height: 30vh;
   text-align: center;
   font-size: 22px;
   font-weight: 700;
   text-decoration: underline;
   position: absolute;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .footer-distributed {
@@ -256,7 +256,7 @@ footer {
   width: 100%;
   position: sticky;
   text-align: left;
-  font: normal 16px sans-serif;
+  font: normal 19px sans-serif;
   /* padding: 45px 50px; */
 }
 
