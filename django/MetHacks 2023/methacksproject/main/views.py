@@ -109,7 +109,19 @@ def responseEval(msg):
             Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed")])
   return response.classifications[0].prediction
 
-
+#generate
+co = cohere.Client('ry6dvHIzlf5GYi40NXpn5lvZAlmeIEhijbUjpasT') # This is your trial API key
+def generateFeedback(msg):
+    response = co.generate(
+    model='command-xlarge-nightly',
+    prompt=msg,
+    max_tokens=300,
+    temperature=0.9,
+    k=0,
+    stop_sequences=[],
+    return_likelihoods='NONE')
+    print('Prediction: {}'.format(response.generations[0].text))
+    return response.generations[0].text
 #EXTRAS
 #TODO: Personalizable journal entries page? (this would be cool but IDK how to do this at all)
 #TODO: Google map API to gather location information for healthcare research purposes
