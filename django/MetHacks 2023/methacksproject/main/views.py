@@ -115,7 +115,20 @@ def responseEval(msg):
             Example("Today, I accomplished a goal that I\'ve been working towards for a long time. I finally finished writing a book that I\'ve been working on for years. As I hit the \"send\" button to submit the manuscript, I felt a sense of contentment and pride. It\'s a great feeling to achieve something that I\'ve worked so hard for and to see the fruits of my labor.", "Content"), 
             Example("Today was one of those days where everything seemed to go wrong. I woke up late, spilled coffee on my shirt, and missed an important meeting at work. The rest of the day was spent playing catch-up and trying to fix my mistakes. As I sit here, exhausted and stressed, I can\'t help but feel like everything is falling apart.", "Stressed"), 
             Example("Today, I received some unexpected bills in the mail that I wasn\'t prepared for. I\'ve been struggling financially and the added stress of these bills is overwhelming. I feel like I\'m drowning in debt and can\'t seem to catch a break. The weight of these financial burdens is taking a toll on my mental and physical health, and I\'m not sure how to cope.", "Stressed"), 
-            Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed")])
+            Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed"),
+            Example("Today was another gloomy day. The weather outside matched my mood perfectly. I couldn\'t shake off this feeling of sadness that has been haunting me for days. It\'s like a heavy weight on my chest that won\'t go away. I tried to distract myself by reading, watching movies, and listening to music, but nothing seems to work. Maybe tomorrow will be a better day.", "Melancholy"),
+            Example("I woke up feeling empty and hopeless today. It\'s hard to explain why I feel this way. It\'s like there\'s a void inside me that nothing can fill. I don\'t have the motivation to do anything, and even the simplest tasks seem overwhelming. I miss the days when I used to feel happy and alive. I wonder if I will ever feel that way again.", "Melancholy"),
+            Example("The world seems so dark and cruel lately. Everywhere I look, I see pain and suffering. It\'s hard to believe that there\'s any goodness left in the world. Sometimes, I feel like giving up and surrendering to the darkness. But I know I can\'t do that. I have to keep going, even if it feels like I\'m fighting a losing battle. Maybe someday, the sun will shine again.", "Melancholy"),
+            Example("I don\'t know what to do. I\'m so confused about my life and my future. I thought I had everything figured out, but now I\'m not so sure. I don\'t know if I\'m on the right path, or if I should make a drastic change. I feel lost and alone, with no one to turn to for guidance. I wish I had a clear direction, but all I see is a maze of uncertainty.", "Confusion"),
+            Example("Today was a strange day. Everything seemed out of place, and I couldn\'t make sense of it. People were saying one thing and doing another, and I didn\'t know who to believe. I felt like I was in a dream, where nothing is real and everything is confusing. I wish I could just wake up and have everything be clear again.", "Confusion"),
+            Example("I\'m in a state of constant confusion lately. It\'s like my brain is in a fog, and I can\'t see anything clearly. I don\'t know what I want, what I need, or what I should do. It\'s all a jumbled mess in my head, and I don\'t know how to sort it out. I wish I had a map or a guidebook to help me navigate through this confusion, but all I have is my own intuition, which seems to be failing me.", "Confusion"),
+            Example("Today, I am grateful for my health. I am so lucky to have a body that can move, breathe, and function properly. I am grateful for the ability to wake up each day and start anew. I will try to take care of myself by nourishing my body and being mindful of my health.", "Gratitude"),
+            Example("I am grateful for my friends and family. They bring so much joy, laughter, and love into my life. I appreciate their support and encouragement, even when I am feeling down. I am blessed to have such wonderful people in my life.", "Gratitude"),
+            Example("Today, I am grateful for nature. I am thankful for the beauty of the trees, the flowers, and the sky. I am grateful for the fresh air and the sunlight that nourishes my body and soul. I will try to spend more time outdoors, connecting with nature and appreciating its wonders.", "Gratitude"),
+            Example("Today, I am grateful for my education. I am blessed to have access to knowledge and opportunities that many people in the world do not have. I am grateful for the chance to learn, to grow, and to become a better version of myself. I will strive to use my education for good, to make a positive impact on the world around me.", "Gratitude"),
+            Example("Today, I am feeling content. I am grateful for the simple pleasures in life, like spending time with loved ones, enjoying a good meal, and watching the sunset. I feel at peace with myself and the world around me. I will try to hold onto this feeling of contentment and spread positivity wherever I go.", "Content"),
+            Example("I am content with where I am in life. I am proud of my accomplishments, and I am excited for what the future holds. I have set goals for myself, and I am working hard to achieve them. I am grateful for the opportunities that have come my way and the people who have supported me along the way.", "Content"),
+            Example("Today, I am super content with myself. I am learning to love and accept myself for who I am, flaws and all. I am grateful for my strengths and my weaknesses, as they make me who I am. I will try to practice self-care and self-compassion, and to treat myself with kindness and respect.", "Content")])
   return response.classifications[0].prediction
 
 #generate
@@ -134,12 +147,13 @@ def generateFeedback(msg):
 
 
 def analyzeAll(request):
-    allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today))
+    allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today()))
     #Add another datebase field
+
     totalEntries = len(allPatientEntriesToday)
     moodDict = {"Melancholy": 0, "Anxiety": 0, "Anger": 0, "Confusion": 0, "Gratitude": 0, "Hopefulness": 0, "Envy": 0, "Content": 0, "Stressed": 0}
     for key in moodDict:
-        moodEntries = PatientData.objects.filter(Q(mood = key))
+        moodEntries = PatientData.objects.filter(Q(mood__icontains = key) & Q(date__icontains = date.today()))
         totalmoodEntries = len(moodEntries)
         if totalmoodEntries == 0 or totalEntries == 0:
             moodDict[key] = 0
