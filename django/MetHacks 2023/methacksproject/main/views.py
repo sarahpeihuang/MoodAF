@@ -23,6 +23,11 @@ def form(request):
             patientfName = request.POST['fname']
             patientlName = request.POST['lname']
             date = request.POST['date']
+            if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                global GLOBAL_FNAME
+                GLOBAL_FNAME = patientfName
+                global GLOBAL_LNAME
+                GLOBAL_LNAME = patientlName
             return analyzeEntry(request, patientfName, patientlName, date)
         else:
             return render(request, 'form.html', {})
@@ -33,8 +38,12 @@ def form(request):
 def analyzeEntry(request, fname, lname, date):
     all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
     #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
-    #return cohere's analysis
-    return render(request, "postForm.html", {'entries': all_entries})
+    for index, entry in enumerate(all_entries):
+        dayEntry += entry
+        if len(all_entries) > 1 and index != len(all_entries)-1:
+            dayEntry += ". "
+    cohereClassification = responseEval(dayEntry)
+    return render(request, "postForm.html", {'entries': all_entries, 'cohere': cohereClassification})
     #return all_entries
         
 
@@ -58,7 +67,7 @@ def summary(request):
 
 def viewEntries(request):
     if GLOBAL_LNAME == None and GLOBAL_FNAME == None:
-        return HttpResponse("pH")
+        return HttpResponse("No Entries")
     else:
         all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
         #PUT COHERE'ED RETURNS
