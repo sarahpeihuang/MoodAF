@@ -51,8 +51,6 @@ def analyzeEntry(request, fname, lname, date):
     cohereGen = generateFeedback(search)
     all_entries.update(feedback=cohereGen)
     return render(request, "postForm.html", {'feedback': cohereGen})
-    #return all_entries
-
 
     
 
