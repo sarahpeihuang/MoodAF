@@ -119,6 +119,9 @@ def responseEval(msg):
             Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed"),
 =======
             Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed")])
+<<<<<<< HEAD
+>>>>>>> 59dc3c008f86a304c788c526336f6b503895f2de
+=======
 >>>>>>> 59dc3c008f86a304c788c526336f6b503895f2de
             Example("Today was another gloomy day. The weather outside matched my mood perfectly. I couldn\'t shake off this feeling of sadness that has been haunting me for days. It\'s like a heavy weight on my chest that won\'t go away. I tried to distract myself by reading, watching movies, and listening to music, but nothing seems to work. Maybe tomorrow will be a better day.", "Melancholy"),
             Example("I woke up feeling empty and hopeless today. It\'s hard to explain why I feel this way. It\'s like there\'s a void inside me that nothing can fill. I don\'t have the motivation to do anything, and even the simplest tasks seem overwhelming. I miss the days when I used to feel happy and alive. I wonder if I will ever feel that way again.", "Melancholy"),
