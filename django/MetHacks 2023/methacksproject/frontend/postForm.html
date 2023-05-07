@@ -44,6 +44,14 @@
     </form>
 </body>
 <footer class="footer-distributed">
+  <div class="footer-right">
+
+    <form action="/community/" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="button-34">Check Out Our Community</button>
+    </form>
+
+  </div>
   Listen to some music<br>
   <audio src="{% static 'music.mp3' %}" controls loop></audio> 
     <div class="footer-left">
@@ -51,7 +59,6 @@
         <a href="index.html"> Home </a>
         <a href="form.html"> New Entry </a>
         <a href="index.html"> Logout </a>
-        <a href="community.html"> Community </a>
         <a href="#"> About </a>
       </p>
       <p>WeRoll &copy; 2023</p>
