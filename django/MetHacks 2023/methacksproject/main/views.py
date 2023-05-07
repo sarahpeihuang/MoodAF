@@ -23,11 +23,11 @@ def form(request):
             patientfName = request.POST['fname']
             patientlName = request.POST['lname']
             date = request.POST['date']
-            #if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
-                #global GLOBAL_FNAME
-                #GLOBAL_FNAME = patientfName
-                #global GLOBAL_LNAME
-                #GLOBAL_LNAME = patientlName
+            global GLOBAL_FNAME
+            global GLOBAL_LNAME
+            if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                GLOBAL_FNAME = patientfName
+                GLOBAL_LNAME = patientlName
             return analyzeEntry(request, patientfName, patientlName, date)
         else:
             return render(request, 'form.html', {})
