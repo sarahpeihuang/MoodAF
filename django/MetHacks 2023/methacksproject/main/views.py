@@ -134,12 +134,13 @@ def generateFeedback(msg):
 
 
 def analyzeAll(request):
-    allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today))
+    allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today()))
     #Add another datebase field
+
     totalEntries = len(allPatientEntriesToday)
     moodDict = {"Melancholy": 0, "Anxiety": 0, "Anger": 0, "Confusion": 0, "Gratitude": 0, "Hopefulness": 0, "Envy": 0, "Content": 0, "Stressed": 0}
     for key in moodDict:
-        moodEntries = PatientData.objects.filter(Q(mood = key))
+        moodEntries = PatientData.objects.filter(Q(mood__icontains = key) & Q(date__icontains = date.today()))
         totalmoodEntries = len(moodEntries)
         if totalmoodEntries == 0 or totalEntries == 0:
             moodDict[key] = 0
