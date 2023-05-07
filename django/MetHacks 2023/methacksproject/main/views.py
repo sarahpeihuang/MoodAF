@@ -40,7 +40,7 @@ def analyzeEntry(request, fname, lname, date):
     #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
     dayEntry = ""
     for index, entry in enumerate(all_entries):
-        dayEntry += entry
+        dayEntry += str(entry)
         if len(all_entries) > 1 and index != len(all_entries)-1:
             dayEntry += ". "
     cohereClassification = responseEval(dayEntry)
