@@ -7,5 +7,5 @@ class PatientForm(forms.ModelForm):
         model = PatientData
 
         #TODO: Define the fields of the database (eg. fields associated with the journal entry)
-        fields = ["fname", "lname", "entryBox", "date"]
+        fields = ["fname", "lname", "entryBox", "date", "feedback"]
         #The "names" of the fields here should be the same as the name specified in form.html
