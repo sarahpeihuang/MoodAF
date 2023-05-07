@@ -134,6 +134,8 @@ def generateFeedback(msg):
 
 def analyzeAll(request):
     allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today))
+    #Add another datebase field
+    totalEntries = len(allPatientEntriesToday)
     return render(request, 'community.html', {"allDayEntries": allPatientEntriesToday})
 
 
