@@ -20,8 +20,7 @@
     
     <form method="POST" action="/form/">
         {% csrf_token %}
-        <p>Hi 
-            {{ first }} {{ last }}, how are you feeling today?
+        <p>Hi {{ first }}, how are you feeling today?
         </p> 
         <p>Entry Date: <input type="date" id="date" name="date" class="textbox">
         <div>
