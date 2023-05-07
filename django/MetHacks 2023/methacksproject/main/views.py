@@ -23,6 +23,11 @@ def form(request):
             patientfName = request.POST['fname']
             patientlName = request.POST['lname']
             date = request.POST['date']
+            if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                global GLOBAL_FNAME
+                GLOBAL_FNAME = patientfName
+                global GLOBAL_LNAME
+                GLOBAL_LNAME = patientlName
             return analyzeEntry(request, patientfName, patientlName, date)
         else:
             return render(request, 'form.html', {})
@@ -58,7 +63,7 @@ def summary(request):
 
 def viewEntries(request):
     if GLOBAL_LNAME == None and GLOBAL_FNAME == None:
-        return HttpResponse("pH")
+        return HttpResponse("No Entries")
     else:
         all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
         #PUT COHERE'ED RETURNS
