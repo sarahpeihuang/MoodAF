@@ -12,6 +12,10 @@ from cohere.responses.classify import Example
 #Where ALL the python functions are written
 
 def home(request):
+    global GLOBAL_FNAME
+    global GLOBAL_LNAME
+    GLOBAL_LNAME = None
+    GLOBAL_FNAME = None
     return render(request, 'index.html', {})
 
 
