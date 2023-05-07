@@ -41,7 +41,6 @@ def form(request):
 
 def analyzeEntry(request, fname, lname, date):
     all_entries = PatientData.objects.filter(Q(fname__icontains = fname) & Q(lname__icontains = lname) & Q(date__icontains = date))
-    #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
     dayEntry = ""
     for index, entry in enumerate(all_entries):
         dayEntry += str(entry)

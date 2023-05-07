@@ -9,7 +9,7 @@ class PatientData(models.Model):
     lname = models.CharField(max_length=50) #Short answer
     entryBox = models.TextField(blank=True) #Long answer (required entry)
     date = models.DateField(default=date.today) #Date entry
-    feedback = models.TextField()
+    feedback = models.TextField(blank=False, default="No feedback")
 
     def __str__(self):
         return (self.fname + " " + self.lname) 
