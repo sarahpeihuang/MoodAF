@@ -10,5 +10,8 @@
 </head>
 <body>
     <h1>You are NOT Alone</h1>
+    {% for key, value in allDayEntries.items %}
+    <li>{{ value }}% of MoodAF users share the feelings of {{ key }}</li>
+    {% endfor %}
 </body>
 </html>

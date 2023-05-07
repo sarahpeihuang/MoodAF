@@ -49,8 +49,11 @@
     <p class="footer-links">
       <a href="index.html"> Home </a>
       <a href="form.html"> New Entry </a>
-      <a href="community.html"> Community </a>
       <a href="#"> About </a>
+      <form action="/community/" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="button-34">Community</button>
+      </form>
     </p>
     <p>WeRoll &copy; 2023</p>
   </div>
