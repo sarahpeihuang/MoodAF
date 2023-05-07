@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 from methacksproject.globals import GLOBAL_FNAME, GLOBAL_LNAME
 from datetime import date
+from django.db.models import F
 import cohere
 from cohere.responses.classify import Example
 
@@ -81,6 +82,16 @@ def viewEntries(request):
     else:
         all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME))
         return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
+
+
+def filterNew(request):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME)).order_by('-date') #asciending order
+    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
+
+
+def filterOld(request):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME)).order_by('date') #asciending order
+    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 
 #classification 

@@ -22,6 +22,16 @@
     <div class="row">
         <h3>{{ first }}'s Entries</h3>
         <div class="column">
+
+          <form style="display:inline-block" method="POST" action="/filterNew/">
+            {% csrf_token %}
+              <button type="submit">Filter by Newest</button>
+          </form>
+          <form style="display:inline-block" method="POST" action="/filterOld/">
+            {% csrf_token %}
+              <button type="submit">Filter by Oldest</button>
+          </form>
+
           <div class="card">
             {% for entry in entries %}
             <p><h2>Date: {{ entry.date }}</h2>
@@ -53,9 +63,9 @@
       Listen to some music<br>
       <audio src="{% static 'music.mp3' %}" controls loop></audio> 
       <p class="footer-links">
-        <a href="index.html"> Home </a>
-        <a href="form.html"> New Entry </a>
-        <a href="index.html"> Logout </a>
+        <a href="#"> Home </a>
+        <a href="#"> New Entry </a>
+        <a href="#"> Logout </a>
         <a href="#"> About </a>
       </p>
       <p>WeRoll &copy; 2023</p>
