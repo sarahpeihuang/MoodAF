@@ -15,7 +15,13 @@
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
 
 <body>
-    <form action="/summary/" method="POST">
+      <form action="/form/" method="POST">
+        {% csrf_token %}
+           <p>Write a 
+          <button type="submit" class="button-34">New Entry</button></p></div>
+      </form>
+      <h3>OR</h3> <br><br>
+      <form action="/summary/" method="POST">
         {% csrf_token %}
 
             <div class="card">
@@ -30,12 +36,6 @@
           <a href="summary.html"><button type="submit" name="submit" class="button-34">View Entries</button></a>
         </p>
             
-      </form>
-
-      <form action="/form/" method="POST">
-        {% csrf_token %}
-          <h3>OR</h3> <br><br> <p>Write a 
-          <button type="submit" class="button-34">New Entry</button></p></div>
       </form>
 </body>
 </html>
