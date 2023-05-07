@@ -48,9 +48,13 @@ def analyzeEntry(request, fname, lname, date):
         if len(all_entries) > 1 and index != len(all_entries)-1:
             dayEntry += ". "
     cohereClassification = responseEval(dayEntry)
-    return render(request, "postForm.html", {'entries': all_entries, 'cohere': cohereClassification})
+    search = 'Give me some suggestions to feel better for a '+ str(cohereClassification) +' mood for my scenario:' + str(dayEntry)   
+    cohereGen = generateFeedback(search)
+    return render(request, "postForm.html", {'feedback': cohereGen})
     #return all_entries
-        
+
+
+    
 
 def postForm(request, originalEntries, analyzedEntries):
     return render(request, "postForm.html", {'entries': originalEntries, 'analyzed': analyzedEntries})
