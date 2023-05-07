@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entry Feedback</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
-    <script type="text/javascript" src="{% static 'css/alert.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/alert.js' %}"></script>
 </head>
 <header>
     <h1 class="gradient-text">MoodAF</h1>
@@ -24,7 +24,7 @@
     </textarea>
     </div>
     <p>
-        <input type="button" id='share' name="share" value = "Share This Entry with a Medical Professional" class="button-34">
+        <input type="button" id='share' name="share" value = "Share This Entry with a Medical Professional" class="button-34" onClick="confirm( 'Entry Sent to Medical Professional' )">
     
     </p>
 
@@ -49,6 +49,7 @@
         <a href="index.html"> Home </a>
         <a href="form.html"> New Entry </a>
         <a href="index.html"> Logout </a>
+        <a href="community.html"> Community </a>
         <a href="#"> About </a>
       </p>
       <p>WeRoll &copy; 2023</p>
