@@ -23,7 +23,9 @@
         {{ value }}% of <span class="gradient-text">MoodAF </span>users share the feelings of {{ key }}
         <br>
         <br>
-    {% endfor %}</p></div>
+    {% endfor %}
+   <p style="color: #CA4246"><span style="color:black">Mental Health Tip of the Day: </span>{{ finalFeedback }}</p>
+  </p></div>
     <p>
         <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add a New Entry" class="button-34"></a>
         <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
@@ -39,11 +41,12 @@
   
     </div>
     <div class="footer-left">
+      <br>
       Listen to some music<br>
       <audio src="{% static 'music.mp3' %}" controls loop></audio> 
       <p class="footer-links">
-        <a href="index.html"> Home </a>
-        <a href="form.html"> New Entry </a>
+        <a href="#"> Home </a>
+        <a href="#"> New Entry </a>
         <a href="#"> About </a>
   
       </p>

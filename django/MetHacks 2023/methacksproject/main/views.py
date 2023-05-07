@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 from methacksproject.globals import GLOBAL_FNAME, GLOBAL_LNAME
 from datetime import date
+from django.db.models import F
 import cohere
 from cohere.responses.classify import Example
 
@@ -21,25 +22,29 @@ def home(request):
 
 
 def form(request):
+    global GLOBAL_FNAME
+    global GLOBAL_LNAME
     if request.method == "POST":
         submission = PatientForm(request.POST or None)
         if submission.is_valid():
             submission.save()
-            patientfName = request.POST['fname']
-            patientlName = request.POST['lname']
             date = request.POST['date']
-            global GLOBAL_FNAME
-            global GLOBAL_LNAME
             if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                patientfName = request.POST['fname']
+                patientlName = request.POST['lname']
                 GLOBAL_FNAME = patientfName
                 GLOBAL_LNAME = patientlName
-            return analyzeEntry(request, patientfName, patientlName, date)
+            return analyzeEntry(request, GLOBAL_FNAME, GLOBAL_LNAME, date)
         else:
-            #return HttpResponse("NO WORK")
-            return render(request, 'form.html', {})
+            if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                return render(request, 'form.html', {})
+            else:
+                return render(request, 'formlogined.html', {"first": GLOBAL_FNAME, "last": GLOBAL_LNAME})
     else:
-        #return HttpResponse("NO WORK")
-        return render(request, 'form.html', {})
+        if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+            return render(request, 'form.html', {})
+        else:
+            return render(request, 'formlogined.html', {"first": GLOBAL_FNAME, "last": GLOBAL_LNAME})
     
 
 def analyzeEntry(request, fname, lname, date):
@@ -71,7 +76,6 @@ def summary(request):
     global GLOBAL_LNAME
     GLOBAL_LNAME = patientlName
 
-    #PUT COHERE'ED RETURNS
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME))
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
@@ -83,6 +87,15 @@ def viewEntries(request):
         all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME))
         return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
+
+def filterNew(request):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME)).order_by('-date') #asciending order
+    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
+
+
+def filterOld(request):
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME)).order_by('date') #asciending order
+    return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 #classification 
 co = cohere.Client('yhlIG1WYyeUVrAJ2NzhQwYKnghq6sbs8DfWCPulm') # This is your trial API key
@@ -117,6 +130,9 @@ def responseEval(msg):
             Example("Today, I received some unexpected bills in the mail that I wasn\'t prepared for. I\'ve been struggling financially and the added stress of these bills is overwhelming. I feel like I\'m drowning in debt and can\'t seem to catch a break. The weight of these financial burdens is taking a toll on my mental and physical health, and I\'m not sure how to cope.", "Stressed"), 
             Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed"),
             Example("The holidays are supposed to be a time of joy and celebration, but for me, it\'s just another source of stress. I have a long list of gifts to buy, parties to attend, and family obligations to fulfill. The thought of all of these commitments is overwhelming and I feel like I can\'t keep up. Instead of feeling excited for the holidays, I\'m filled with stress and anxiety.", "Stressed"),
+            Example("Today has been a rough day. I feel completely overwhelmed and stressed out. It seems like everything is piling up on me all at once. Work has been especially demanding lately, and I'm having trouble keeping up with everything. I'm also dealing with some personal issues that have been weighing on my mind. I can't seem to shake this feeling of anxiety, and it's making it hard for me to focus on anything. My heart is racing, and I feel like I'm on edge all the time. I know I need to find a way to manage this stress before it completely takes over my life.", "Stressed"),
+            Example("I feel like I'm constantly running behind schedule, and it's stressing me out. No matter how hard I try to manage my time, there just never seems to be enough of it. I'm juggling so many different tasks and responsibilities, and it's starting to take a toll on me. I feel like I'm always on the go, and I never have a chance to catch my breath. I'm exhausted all the time, and I'm struggling to keep up with everything. I know I need to figure out a way to manage my time more effectively if I want to get control of this stress.", "Stressed"),
+            Example("I'm feeling completely burned out today. I've been working so hard lately, and it seems like no matter how much effort I put in, I just can't get ahead. I'm feeling stressed out all the time, and I'm starting to lose my motivation. I don't feel like I have anything left to give, and it's making me feel really down. I know I need to take a step back and recharge my batteries before this stress completely consumes me. I need to find a way to manage my workload and take care of myself at the same time.", "Stressed"),
             Example("Today was another gloomy day. The weather outside matched my mood perfectly. I couldn\'t shake off this feeling of sadness that has been haunting me for days. It\'s like a heavy weight on my chest that won\'t go away. I tried to distract myself by reading, watching movies, and listening to music, but nothing seems to work. Maybe tomorrow will be a better day.", "Melancholy"),
             Example("I woke up feeling empty and hopeless today. It\'s hard to explain why I feel this way. It\'s like there\'s a void inside me that nothing can fill. I don\'t have the motivation to do anything, and even the simplest tasks seem overwhelming. I miss the days when I used to feel happy and alive. I wonder if I will ever feel that way again.", "Melancholy"),
             Example("The world seems so dark and cruel lately. Everywhere I look, I see pain and suffering. It\'s hard to believe that there\'s any goodness left in the world. Sometimes, I feel like giving up and surrendering to the darkness. But I know I can\'t do that. I have to keep going, even if it feels like I\'m fighting a losing battle. Maybe someday, the sun will shine again.", "Melancholy"),
@@ -161,7 +177,16 @@ def analyzeAll(request):
             percentage = int((totalmoodEntries/totalEntries) * 100)
             moodDict[key] = percentage
 
-    return render(request, 'community.html', {"allDayEntries": moodDict})
+    allFeedback = ""
+    for index, entry in enumerate(allPatientEntriesToday):
+        allFeedback += entry.feedback
+        if index != totalEntries-1:
+            allFeedback += ". " 
+
+    search = 'Given all the mental health and self care tips: ' + allFeedback + ', give me ONE mental health tip that summarizes everything. Do not use the word summary in the generated message. Do not use the phrase mental health tip.'
+    cohereGen = generateFeedback(search)
+
+    return render(request, 'community.html', {"allDayEntries": moodDict, "finalFeedback": cohereGen})
 
 
 

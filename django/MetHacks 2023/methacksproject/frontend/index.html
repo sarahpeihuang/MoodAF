@@ -19,8 +19,7 @@
   <div class="card">
       <form action="/form/" method="POST">
         {% csrf_token %}
-           <p>Write a 
-          <button type="submit" class="button-34">New Entry</button></p>
+           <p>Write a    <button type="submit" class="button-34">New Entry</button></p>
       </form>
       <h3>OR</h3> <br>
       <form action="/summary/" method="POST">
@@ -30,6 +29,7 @@
         <p>Login to View Old Entries: <br><br>
           <label for="fname">First Name</label>
           <input type="text"  class="textbox" placeholder="Enter First Name" name="fname" required>
+          <br>
           <br>
           <label for="lname"><b>Last Name</b></label>
          
@@ -52,11 +52,12 @@
 
   </div>
   <div class="footer-left">
+    <br>
     Listen to some music<br>
     <audio src="{% static 'music.mp3' %}" controls loop></audio> 
     <p class="footer-links">
-      <a href="index.html"> Home </a>
-      <a href="form.html"> New Entry </a>
+      <a href="#"> Home </a>
+      <a href="#"> New Entry </a>
       <a href="#"> About </a>
 
     </p>
