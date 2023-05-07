@@ -19,7 +19,7 @@
         {% csrf_token %}
 
       
-        <p>Login to View Old Entries:<p>
+        <p>Login to View Old Entries: <br>
           <label for="fname">First Name</label>
           <input type="text"  class="textbox" placeholder="Enter First Name" name="fname" required>
           <br>
@@ -27,13 +27,13 @@
          
           <input type="text" class="textbox" placeholder="Enter Last Name" name="lname" required>
           <br>
-          <a href="summary.html"><button type="submit" name="submit" class="button-34">View Entries</button></a></p>
+          <a href="summary.html"><button type="submit" name="submit" class="button-34">View Entries</button></a>
         </p>
       </form>
 
       <form action="/form/" method="POST">
         {% csrf_token %}
-          <h3>OR</h3> <br><br> <p>Write a
+          <h3>OR</h3> <br><br> <p>Write a 
           <button type="submit" class="button-34">New Entry</button></p>
       </form>
 </body>
