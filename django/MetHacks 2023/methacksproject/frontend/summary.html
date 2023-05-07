@@ -15,11 +15,12 @@
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
 
 <body>
-    <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add a New Entry"></a>
-    <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout"></a>
-
+    <p>
+    <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add a New Entry" class="button-34"></a>
+    <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
+    </p>    
     <div>
-        <h1>{{ first }}'s Entries</h1>
+        <h3>{{ first }}'s Entries</h3>
         {% for entry in entries %}
         <p>Date: {{ entry.date }}</p>
         {{ entry.entryBox }}
@@ -27,6 +28,9 @@
         <br>
         {% endfor %}
     </div>
-
+    <p>
+        <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add a New Entry" class="button-34"></a>
+        <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
+    </p>  
 </body>
 </html>

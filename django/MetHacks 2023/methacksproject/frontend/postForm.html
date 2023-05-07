@@ -15,7 +15,7 @@
 
 <body>
     <div>
-        <p>Your Entry Summary + Recommendations: </p>
+        <h3>Your Entry Summary + Recommendations: </h3>
         <br>
         <textarea  class="textbox" id="entryBox" name="entryBox" rows="8" cols="101" class="textbox" readonly>
         {% for entry in entries %}
@@ -24,7 +24,9 @@
     </textarea>
     </div>
     <p>
-        <input type="button" name="share" value = "Share This Entry with a Medical Professional" class="button-34"></p>
+        <input type="button" name="share" value = "Share This Entry with a Medical Professional" class="button-34">
+    
+    </p>
 
     <form>
         {% csrf_token %}
