@@ -71,7 +71,6 @@ def summary(request):
     global GLOBAL_LNAME
     GLOBAL_LNAME = patientlName
 
-    #PUT COHERE'ED RETURNS
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME))
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
@@ -161,7 +160,16 @@ def analyzeAll(request):
             percentage = int((totalmoodEntries/totalEntries) * 100)
             moodDict[key] = percentage
 
-    return render(request, 'community.html', {"allDayEntries": moodDict})
+    allFeedback = ""
+    for index, entry in enumerate(allPatientEntriesToday):
+        allFeedback += entry.feedback
+        if index != totalEntries-1:
+            allFeedback += ". " 
+
+    search = 'Given all the mental health and self care tips: ' + allFeedback + ', give me ONE mental health tip that summarizes everything.'
+    cohereGen = generateFeedback(search)
+
+    return render(request, 'community.html', {"allDayEntries": moodDict, "finalFeedback": cohereGen})
 
 
 
