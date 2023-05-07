@@ -44,11 +44,18 @@
    
 </body>
 <footer class="footer-distributed">
+  <div class="footer-right">
+
+    <form action="/community/" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="button-34">Check Out Our Community</button>
+    </form>
+
+  </div>
     <div class="footer-left">
       <p class="footer-links">
         <a href="index.html"> Home </a>
         <a href="form.html"> Logout </a>
-        <a href="community.html"> Community </a>
         <a href="#"> About </a>
       </p>
       <p>WeRoll &copy; 2023</p>
