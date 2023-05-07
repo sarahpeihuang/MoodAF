@@ -93,7 +93,6 @@ def filterOld(request):
     all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME)).order_by('date') #asciending order
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
-
 #classification 
 co = cohere.Client('yhlIG1WYyeUVrAJ2NzhQwYKnghq6sbs8DfWCPulm') # This is your trial API key
 def responseEval(msg):
