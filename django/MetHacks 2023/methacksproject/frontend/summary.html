@@ -25,11 +25,11 @@
 
           <form style="display:inline-block" method="POST" action="/filterNew/">
             {% csrf_token %}
-              <button type="submit">Filter by Newest</button>
+              <button type="submit" style="color: green; background-color: #c2fbd7; cursor: pointer;">Filter by Newest</button>
           </form>
           <form style="display:inline-block" method="POST" action="/filterOld/">
             {% csrf_token %}
-              <button type="submit">Filter by Oldest</button>
+              <button type="submit" style="color: green; background-color: #c2fbd7; cursor: pointer;">Filter by Oldest</button>
           </form>
 
           <div class="card">

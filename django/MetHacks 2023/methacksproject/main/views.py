@@ -176,7 +176,7 @@ def analyzeAll(request):
         if index != totalEntries-1:
             allFeedback += ". " 
 
-    search = 'Given all the mental health and self care tips: ' + allFeedback + ', give me ONE mental health tip that summarizes everything.'
+    search = 'Given all the mental health and self care tips: ' + allFeedback + ', give me ONE mental health tip that summarizes everything. Do not use the word summary in the generated message. Do not use the phrase mental health tip.'
     cohereGen = generateFeedback(search)
 
     return render(request, 'community.html', {"allDayEntries": moodDict, "finalFeedback": cohereGen})
