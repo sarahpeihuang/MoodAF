@@ -41,7 +41,6 @@ def form(request):
 
 def analyzeEntry(request, fname, lname, date):
     all_entries = PatientData.objects.filter(Q(fname__icontains = fname) & Q(lname__icontains = lname) & Q(date__icontains = date))
-    #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
     dayEntry = ""
     for index, entry in enumerate(all_entries):
         dayEntry += str(entry)
@@ -50,9 +49,8 @@ def analyzeEntry(request, fname, lname, date):
     cohereClassification = responseEval(dayEntry)
     search = 'Give me some suggestions to feel better for a '+ str(cohereClassification) +' mood for my scenario:' + str(dayEntry)   
     cohereGen = generateFeedback(search)
+    all_entries.update(feedback=cohereGen)
     return render(request, "postForm.html", {'feedback': cohereGen})
-    #return all_entries
-
 
     
 
