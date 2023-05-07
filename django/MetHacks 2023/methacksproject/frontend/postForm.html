@@ -31,14 +31,26 @@
         {% csrf_token %}
         <!-- alert on click -->
         <br><br>
-        <p>
-        <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add Another Entry" class="button-34"></a>    
-        <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
-        </p>
+        
+        
+        
     </form>
     <form method="POST" action="/viewEntries/">
-        {% csrf_token %}
-        <button type="submit" class="button-34">View All My Entries</button> 
+        {% csrf_token %}<p>
+        <a href="http://127.0.0.1:8000/form/"><input type="button" name="submit" value = "Add Another Entry" class="button-34"></a>    
+        <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
+        <button type="submit" class="button-34">View All My Entries</button> </p>
     </form>
 </body>
+<footer class="footer-distributed">
+    <div class="footer-left">
+      <p class="footer-links">
+        <a href="index.html"> Home </a>
+        <a href="form.html"> New Entry </a>
+        <a href="index.html"> Logout </a>
+        <a href="#"> About </a>
+      </p>
+      <p>WeRoll &copy; 2023</p>
+    </div>
+  </footer>
 </html>

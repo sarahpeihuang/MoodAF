@@ -24,13 +24,13 @@
         <div class="column">
           <div class="card">
             {% for entry in entries %}
-            <p>Date: {{ entry.date }}</p>
+            <p><h2>Date: {{ entry.date }}</h2>
             {{ entry.entryBox }}
             <br>
-            {{ entry.feedback }}
+            <div class="p1">{{ entry.feedback }}</div>
             <br>
             <br>
-            {% endfor %}
+            {% endfor %}</p>
         </div>
 </div>
 </div>  
@@ -39,4 +39,15 @@
         <a href="http://127.0.0.1:8000/"><input type="button" name="logout" value = "Logout" class="button-34"></a>
     </p>  
 </body>
+<footer class="footer-distributed">
+    <div class="footer-left">
+      <p class="footer-links">
+        <a href="index.html"> Home </a>
+        <a href="form.html"> New Entry </a>
+        <a href="index.html"> Logout </a>
+        <a href="#"> About </a>
+      </p>
+      <p>WeRoll &copy; 2023</p>
+    </div>
+  </footer>
 </html>
