@@ -22,25 +22,29 @@ def home(request):
 
 
 def form(request):
+    global GLOBAL_FNAME
+    global GLOBAL_LNAME
     if request.method == "POST":
         submission = PatientForm(request.POST or None)
         if submission.is_valid():
             submission.save()
-            patientfName = request.POST['fname']
-            patientlName = request.POST['lname']
             date = request.POST['date']
-            global GLOBAL_FNAME
-            global GLOBAL_LNAME
             if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                patientfName = request.POST['fname']
+                patientlName = request.POST['lname']
                 GLOBAL_FNAME = patientfName
                 GLOBAL_LNAME = patientlName
-            return analyzeEntry(request, patientfName, patientlName, date)
+            return analyzeEntry(request, GLOBAL_FNAME, GLOBAL_LNAME, date)
         else:
-            #return HttpResponse("NO WORK")
-            return render(request, 'form.html', {})
+            if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+                return render(request, 'form.html', {})
+            else:
+                return render(request, 'formlogined.html', {"first": GLOBAL_FNAME, "last": GLOBAL_LNAME})
     else:
-        #return HttpResponse("NO WORK")
-        return render(request, 'form.html', {})
+        if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
+            return render(request, 'form.html', {})
+        else:
+            return render(request, 'formlogined.html', {"first": GLOBAL_FNAME, "last": GLOBAL_LNAME})
     
 
 def analyzeEntry(request, fname, lname, date):
