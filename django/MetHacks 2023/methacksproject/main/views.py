@@ -50,6 +50,7 @@ def analyzeEntry(request, fname, lname, date):
         if len(all_entries) > 1 and index != len(all_entries)-1:
             dayEntry += ". "
     cohereClassification = responseEval(dayEntry)
+    all_entries.update(mood=cohereClassification)
     search = 'Give me some suggestions to feel better for a '+ str(cohereClassification) +' mood for my scenario:' + str(dayEntry)   
     cohereGen = generateFeedback(search)
     all_entries.update(feedback=cohereGen)
