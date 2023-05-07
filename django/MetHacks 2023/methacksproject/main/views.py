@@ -34,8 +34,10 @@ def form(request):
                 GLOBAL_LNAME = patientlName
             return analyzeEntry(request, patientfName, patientlName, date)
         else:
+            #return HttpResponse("NO WORK")
             return render(request, 'form.html', {})
     else:
+        #return HttpResponse("NO WORK")
         return render(request, 'form.html', {})
     
 
