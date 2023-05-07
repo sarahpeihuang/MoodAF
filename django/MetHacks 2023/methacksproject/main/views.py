@@ -36,7 +36,7 @@ def form(request):
     
 
 def analyzeEntry(request, fname, lname, date):
-    all_entries = PatientData.objects.filter(Q(fname__icontains = fname) | Q(lname__icontains = lname) | Q(date__icontains = date))
+    all_entries = PatientData.objects.filter(Q(fname__icontains = fname) & Q(lname__icontains = lname) & Q(date__icontains = date))
     #COHERE CODE, OR LINK FUNCTION THAT CLASSIFIES IT
     dayEntry = ""
     for index, entry in enumerate(all_entries):
@@ -62,7 +62,7 @@ def summary(request):
     GLOBAL_LNAME = patientlName
 
     #PUT COHERE'ED RETURNS
-    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) | Q(lname__icontains = GLOBAL_LNAME))
+    all_entries = PatientData.objects.filter(Q(fname__icontains = GLOBAL_FNAME) & Q(lname__icontains = GLOBAL_LNAME))
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 
