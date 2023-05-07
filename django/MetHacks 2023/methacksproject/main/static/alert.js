@@ -1,7 +1,11 @@
-let med = document.getElementById("share");
+const med = document.getElementById("share");
 
-
+console.log("hi")
 const rideFormHandler = (event) => {
-    alert("Order Confirmed");}
+    console.log("hi")
+    alert("Order Confirmed1");}
 
-// med.addEventListener('click', rideFormHandler);
+med.addEventListener("click", ()=>{
+    console.log("hi2")
+    alert("Order Confirmed2")
+});
