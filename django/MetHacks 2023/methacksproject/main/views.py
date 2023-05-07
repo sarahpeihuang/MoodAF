@@ -137,7 +137,14 @@ def analyzeAll(request):
     allPatientEntriesToday = PatientData.objects.filter(Q(date__icontains = date.today))
     #Add another datebase field
     totalEntries = len(allPatientEntriesToday)
-    return render(request, 'community.html', {"allDayEntries": allPatientEntriesToday})
+    moodDict = {"Melancholy": 0, "Anxiety": 0, "Anger": 0, "Confusion": 0, "Gratitude": 0, "Hopefulness": 0, "Envy": 0, "Content": 0, "Stressed": 0}
+    for key in moodDict:
+        moodEntries = PatientData.objects.filter(Q(mood = key))
+        totalmoodEntries = len(moodEntries)
+        percentage = int((totalmoodEntries/totalEntries) * 100)
+        moodDict[key] = percentage
+
+    return render(request, 'community.html', {"allDayEntries": moodDict})
 
 
 
