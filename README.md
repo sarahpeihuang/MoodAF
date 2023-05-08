@@ -1,7 +1,7 @@
 # MoodAF
 Statistics show that 1 in 4 people feel they have no one to confide in, and even after sharing their feelings, 70% of them have held back how they truly felt when opening up. To address this issue, our team has risen to this challenge by developing a webapp that identifies emotions from a user’s journal entries and lists mediations.
 
-MoodAF is an innovative solution that uses Cohere Classify and Generate API to create a safe space for individuals to share their experiences and emotions through journaling, with the goal of reducing stigma, improving understanding, and providing accessibility for medical professionals to understand their patients. 
+Mood Analytics & Feedback (MoodAF) is an innovative solution that uses Cohere Classify and Generate API to create a safe space for individuals to share their experiences and emotions through journaling, with the goal of reducing stigma, improving understanding, and providing accessibility for medical professionals to understand their patients. 
 
 # Table of Contents  
 [Inspiration](#Inspiration)  
