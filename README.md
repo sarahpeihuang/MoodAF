@@ -33,7 +33,6 @@ After submitting multiple entries, users can review their mood trends overtime i
 Everyday, the community page is refreshed for users to see how everyone else on MoodAF is feeling, assuring them that they are not alone. Using the journal entries of all the users, a Mental Health Tip of the Day is generated with the Cohere Generate API.
 ![image](https://user-images.githubusercontent.com/43208342/236710715-eaae6c2d-f0a0-46f6-96f8-fb0e10178227.png)
 
-By asking users to input their thoughts and feelings through journal entries, the project will create a database of their entries that can be analyzed to identify common themes and emotions. The project will then provide 
 
 ## Challenges We Encountered
 
