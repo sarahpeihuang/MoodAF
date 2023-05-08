@@ -8,7 +8,7 @@ MoodAF is an innovative solution that uses Cohere Classify and Generate API to c
 [Interface](#Interface)  
 [Levels](#Levels)  
 [Challenges Encoutered](#Challenges-We-Encountered)  
-[Accomplishments](#accomplishments-that-we're-proud-of)
+[Accomplishments](#accomplishments)
 [What We Learned](#What-we-learned)
 [What's Next?](#What's-Next-for-MoodAF)   
  
@@ -38,7 +38,7 @@ Everyday, the community page is refreshed for users to see how everyone else on 
 
 It was difficult working with Django's built-in database system, django.db, for the first time, as we were unfamiliar with the framework. Some of the challenges we faced included learning the new syntax for querying the database, configuring the database settings, and understanding how the database schema is created and managed.
 
-## Accomplishments That We're Proud Of
+## Accomplishments
 
 As a team, we are extremely proud of successfully implementing two powerful APIs, Cohere Classify and Cohere Generate, into our project. These APIs have allowed us to leverage the latest advances in Natural Language Processing (NLP) to provide advanced functionality and insights to our users.
 
