@@ -29,22 +29,16 @@ def form(request):
         if submission.is_valid():
             submission.save()
             date = request.POST['date']
+            patientfName = request.POST['fname']
+            patientlName = request.POST['lname']
             if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
-                patientfName = request.POST['fname']
-                patientlName = request.POST['lname']
                 GLOBAL_FNAME = patientfName
                 GLOBAL_LNAME = patientlName
             return analyzeEntry(request, GLOBAL_FNAME, GLOBAL_LNAME, date)
         else:
-            if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
-                return render(request, 'form.html', {})
-            else:
-                return render(request, 'formlogined.html', {"first": GLOBAL_FNAME, "last": GLOBAL_LNAME})
-    else:
-        if GLOBAL_FNAME == None and GLOBAL_LNAME == None:
             return render(request, 'form.html', {})
-        else:
-            return render(request, 'formlogined.html', {"first": GLOBAL_FNAME, "last": GLOBAL_LNAME})
+    else:
+        return render(request, 'form.html', {})
     
 
 def analyzeEntry(request, fname, lname, date):
@@ -98,7 +92,7 @@ def filterOld(request):
     return render(request, 'summary.html', {'entries': all_entries, 'first': GLOBAL_FNAME, 'last': GLOBAL_LNAME})
 
 #classification 
-co = cohere.Client('yhlIG1WYyeUVrAJ2NzhQwYKnghq6sbs8DfWCPulm') # This is your trial API key
+co = cohere.Client('eSqjhY9UzoLkThXayCZaW4QLKbr7YFnQgIseI1rX') # This is your trial API key # This is your trial API key
 def responseEval(msg):
   response = co.classify(
   model='large',
@@ -149,7 +143,7 @@ def responseEval(msg):
   return response.classifications[0].prediction
 
 #generate
-co = cohere.Client('ry6dvHIzlf5GYi40NXpn5lvZAlmeIEhijbUjpasT') # This is your trial API key
+co = cohere.Client('eSqjhY9UzoLkThXayCZaW4QLKbr7YFnQgIseI1rX') # This is your trial API key # This is your trial API key
 def generateFeedback(msg):
     response = co.generate(
     model='command-xlarge-nightly',
@@ -183,7 +177,7 @@ def analyzeAll(request):
         if index != totalEntries-1:
             allFeedback += ". " 
 
-    search = 'Given all the mental health and self care tips: ' + allFeedback + ', give me ONE mental health tip that summarizes everything. Do not use the word summary in the generated message. Do not use the phrase mental health tip.'
+    search = 'Given all the mental health and self care tips: ' + allFeedback + ', give me ONE mental health tip that summarizes everything.'
     cohereGen = generateFeedback(search)
 
     return render(request, 'community.html', {"allDayEntries": moodDict, "finalFeedback": cohereGen})
