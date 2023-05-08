@@ -9,9 +9,7 @@ MoodAF is an innovative solution that uses Cohere Classify and Generate API to c
 [Levels](#Levels)  
 [Challenges Encoutered](#Challenges-We-Encountered)  
 [Accomplishments](#accomplishments)
-
 [What We Learned](#What-we-learned)
-
 [What's Next?](#What's-Next)   
  
 
