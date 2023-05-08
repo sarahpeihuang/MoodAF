@@ -8,7 +8,8 @@ MoodAF is an innovative solution that uses Cohere Classify and Generate API to c
 [Interface](#Interface)  
 [Challenges Encoutered](#Challenges-We-Encountered)  
 [What We Learned](#What-we-learned)
-[What's Next?](#What's-Next-for-20-Past-4)    
+
+[What's Next?](#What's-Next-for-MoodAF)    
 
 ## Inspiration
 
@@ -39,6 +40,6 @@ It was difficult working with Django's built-in database system, django.db, for 
 
 As a team comprised of individuals from different universities, we were faced with the challenge of collaborating and working together effectively. However, we are proud to say that we successfully learned how to collaborate as a team and work towards a common goal. We quickly identified the strengths and weaknesses of each team member, and delegated tasks accordingly, ensuring that everyone was able to contribute their skills and knowledge. We are proud of what we have accomplished as a team, and we look forward to continuing to work together in the future.
 
-# What's Next for 20 Past 4
+# What's Next for MoodAF
 
 As we look to the future of MoodAF, one of our key priorities is to implement a voice-to-text aspect of the project. This will allow users to speak their journal entries rather than typing them out, which can be especially useful for individuals who may have difficulty with typing or prefer to speak their thoughts out loud.
